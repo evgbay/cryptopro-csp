@@ -1,15 +1,14 @@
 # HowToBuild
 
-- Добавь root сертификат УЦ в папку config/certificates
+- Добавь корневой сертификат УЦ в папку config/certificates
 - Добавь персональный файл в pfx-формате в папку config/certificates
 
 ### Аргументы для запуска:
 
 > Обратите внимание на наличие обязательных аргументов.
 
-- LICENSE - Лицензия CryptoPro CSP (Не обязательный аргумент - будет использована триальная лицензия на 90 дней)
-- CA_ROOT_CERT - CryptoPro CA Root Certificate (__Обязательный аргумент__)
-- CONTAINER_NAME=Admin - Имя контейнера CryptoPro CSP (Не обязательный аргумент - будет использовано стандартное значение "Admin")
+- LICENSE - Лицензия КриптоПро CSP (Не обязательный аргумент - будет использована триальная лицензия на 90 дней)
+- CA_ROOT_CERT - Корневой сертификат УЦ (__Обязательный аргумент__)
 - CLIENT_PFX_FILE - PFX-файл в котором связан сертификат с ключами (__Обязательный аргумент__)
 - CLIENT_PFX_PASSWORD - Пароль от PFX-файла (__Обязательный аргумент__)
 - CLIENT_CERT_THUMB - Отпечаток сертификата хранящегося в PFX-файле (__Обязательный аргумент__)
@@ -20,11 +19,11 @@
 
 - Извлечь сертификат из PFX в PEM формат:
 ```bash
-openssl pkcs12 -in ваш_файл.pfx -clcerts -nokeys -out cert.pem
+openssl pkcs12 -in имя_файла.pfx -clcerts -nokeys -out имя_сертификата.pem
 ```
 - Получить отпечаток сертификата
 ```bash
-openssl x509 -in cert.pem -fingerprint -sha1 -noout
+openssl x509 -in имя_сертификата.pem -fingerprint -sha1 -noout
 ```
 - В консоли будет выведено
 ```bash
@@ -41,7 +40,6 @@ sha1 Fingerprint=86:1D:44:D7:E2:40:57:19:65:3C:80:FB:C2:B9:D2:81:84:72:E6:8
     docker build \
     --build-arg LICENSE=xxxxx-xxxxx-xxxxx-xxxxx-xxxxx \
     --build-arg CA_ROOT_CERT=RootCertificate.cer \
-    --build-arg CONTAINER_NAME=ContainerName \
     --build-arg CLIENT_PFX_FILE=PersonalPfxFile.pfx \
     --build-arg CLIENT_PFX_PASSWORD=PersonalPfxFilePassword \
     --build-arg CLIENT_CERT_THUMB=PersonalCertificateThunmprintFromPfxFile \
@@ -51,7 +49,6 @@ sha1 Fingerprint=86:1D:44:D7:E2:40:57:19:65:3C:80:FB:C2:B9:D2:81:84:72:E6:8
 ```shell
     docker build `
     --build-arg CA_ROOT_CERT=RootCertificate.cer `
-    --build-arg CONTAINER_NAME=ContainerName `
     --build-arg CLIENT_PFX_FILE=PersonalPfxFile.pfx `
     --build-arg CLIENT_PFX_PASSWORD=PersonalPfxFilePassword `
     --build-arg CLIENT_CERT_THUMB=PersonalCertificateThunmprintFromPfxFile `
