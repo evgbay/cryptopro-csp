@@ -17,7 +17,7 @@ RUN /opt/cprocsp/bin/amd64/certmgr -install -silent -store mROOT -file /tls/cert
 
 COPY config/certificates/${CLIENT_PFX_FILE} /var/opt/cprocsp/keys/root/
 WORKDIR /var/opt/cprocsp/keys/root/
-RUN /opt/cprocsp/bin/amd64/certmgr -install -provtype 24 -pfx -file ${CLIENT_PFX_FILE} -silent -keep_exportable -pin ${CLIENT_PFX_PASSWORD}
+RUN /opt/cprocsp/bin/amd64/certmgr -install -provtype 80 -pfx -file ${CLIENT_PFX_FILE} -silent -keep_exportable -pin ${CLIENT_PFX_PASSWORD}
 
 RUN /opt/cprocsp/bin/amd64/certmgr -list
 
