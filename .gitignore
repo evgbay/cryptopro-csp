@@ -1,4 +1,5 @@
 build/
+/opt/
 config/certificates/*
 !config/certificates/.gitkeep
 *.pfx
