@@ -1,4 +1,4 @@
-FROM evgbay/cryptopro-csp-base:1.6.0
+FROM evgbay/cryptopro-csp-base:1.8.1
 
 ARG LICENSE
 ARG CA_ROOT_CERT
